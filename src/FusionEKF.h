@@ -44,6 +44,16 @@ private:
   Eigen::MatrixXd R_radar_;
   Eigen::MatrixXd H_laser_;
   Eigen::MatrixXd Hj_;
+  Eigen::VectorXd x_;    // 4D State Vector
+  Eigen::MatrixXd P_;    // State Covariance Matrix
+  Eigen::MatrixXd R_;    // Measurement Covariance Matrix
+  Eigen::MatrixXd Q_;    // Process Covariance Matrix
+  Eigen::MatrixXd H_;    // Measurement Matrix
+  Eigen::MatrixXd F_;    // Initial Trasition Matrix
+
+  //acceleration noise components
+  float noise_ax;
+  float noise_ay;
 };
 
 #endif /* FusionEKF_H_ */
