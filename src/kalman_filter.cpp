@@ -106,16 +106,17 @@ VectorXd h(VectorXd predicted_state) {
 // Normalize Angle
 double SNormalizeAngle(double phi)
 {
-  //const double Max = M_PI;
-  //const double Min = -M_PI;
-
-  //return phi < Min
-  //  ? Max + std::fmod(phi - Min, Max - Min)
-  //  : std::fmod(phi - Min, Max - Min) + Min;
-
+  
   // make sure to normalize ϕ in the y vector so that its angle is between −pi and pi
-   // define PI constant
-  const double PI  = 3.141592653589793238463;
+  // define PI constant
+  const double Max = M_PI;
+  const double Min = -M_PI;
+
+  return phi < Min
+    ? Max + std::fmod(phi - Min, Max - Min)
+    : std::fmod(phi - Min, Max - Min) + Min;
+
+/**  const double PI  = 3.141592653589793238463;
 
   while (phi < -PI) {
     phi += 2 * PI;
@@ -124,8 +125,8 @@ double SNormalizeAngle(double phi)
   while (phi > PI) {
     phi -= 2 * PI;
   }
-
-  return phi;
+*/
+  //return phi;
 }
 
 void KalmanFilter::UpdateEKF(const VectorXd &z) {
